@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>titles</title>
+</head>
+<body>
+<h1>Please scroll down after the whole table to see Bar Chart & Pie chart of most popular jobs</h1>
+<br>
+
+<table>
+    <thead>
+    <tr>
+        <th>titles</th>
+        <th>Jobs Count</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="job: ${message}">
+        <td th:text="${job.key}">&nbsp;</td>
+        <td th:text="${job.value}">&nbsp;</td>
+    </tr>
+
+    </tbody>
+</table>
+<br>
+<h1>Most popular jobs BarChart</h1>
+<br>
+<img src="\most popular jobs bar chart.jpg" height= "700px" width="1200px" alt="alt"/>
+<br>
+<h1>Most popular jobs PieChart</h1>
+<br>
+<img src="\most popular jobs pie chart.jpg" height= "700px" width="1000px" alt="alt"/>
+</body>
+</html>

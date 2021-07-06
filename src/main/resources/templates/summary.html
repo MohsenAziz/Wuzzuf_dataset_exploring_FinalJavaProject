@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en"xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Summary</title>
+</head>
+<body>
+<table>
+  <thead>
+  <tr>
+    <th>Summary</th>
+  </tr>
+  <tr>
+    <th>Job Title, Company, Location, Type, Level, Years Exp, Country, Skills</th>
+  </tr>
+  </thead>
+  <tbody>
+      <tr th:each="summary: ${message}">
+        <td th:text="${summary}">&nbsp;</td>
+      </tr>
+  </tbody>
+</table>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Read Data</title>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th>Job Title</th>
+        <th>Company</th>
+        <th>Location</th>
+        <th>Type</th>
+        <th>Level</th>
+        <th>Years Exp</th>
+        <th>Country</th>
+        <th>Skill</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="datarow: ${message}">
+        <td th:text="${datarow[0]}">&nbsp;</td>
+        <td th:text="${datarow[1]}">&nbsp;</td>
+        <td th:text="${datarow[2]}">&nbsp;</td>
+        <td th:text="${datarow[3]}">&nbsp;</td>
+        <td th:text="${datarow[4]}">&nbsp;</td>
+        <td th:text="${datarow[5]}">&nbsp;</td>
+        <td th:text="${datarow[6]}">&nbsp;</td>
+        <td th:text="${datarow[7]}">&nbsp;</td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

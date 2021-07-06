@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en"xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>location</title>
+</head>
+<body>
+<h1>Please scroll down after the whole table to see Bar Chart & Pie chart of most popular areas</h1>
+<br>
+<table>
+  <thead>
+  <tr>
+    <th>location</th>
+    <th> Count</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="area: ${message}">
+    <td th:text="${area.key}">&nbsp;</td>
+    <td th:text="${area.value}">&nbsp;</td>
+  </tr>
+
+  </tbody>
+</table>
+<br>
+<h1>Most popular areas BarChart</h1>
+<br>
+<img src="\most popular areas bar chart.jpg" height= "700px" width="1200px" alt="alt"/>
+<br>
+<h1>Most popular areas PieChart</h1>
+<br>
+<img src="\most popular areas pie chart.jpg" height= "700px" width="1000px" alt="alt"/>
+</body>
+</html>

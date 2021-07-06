@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Companies Job</title>
+</head>
+<body>
+<h1>Please scroll down after the whole table to see Bar Chart & Pie chart of most demanding companies for jobs</h1>
+<br>
+<table>
+    <thead>
+    <tr>
+        <th>Company Name</th>
+        <th>Jobs Count</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="company: ${message}">
+        <td th:text="${company.key}">&nbsp;</td>
+        <td th:text="${company.value}">&nbsp;</td>
+    </tr>
+    </tbody>
+</table>
+
+<br>
+<h1>Most demanding companies for jobs BarChart</h1>
+<br>
+<img src="\most demanding companies for jobs bar chart.jpg" height= "700px" width="1200px" alt="alt"/>
+<br>
+<h1>Most demanding companies for jobs PieChart</h1>
+<br>
+<img src="\most demanding companies for jobs pie chart.jpg" height= "700px" width="1000px" alt="alt"/>
+</body>
+</html>

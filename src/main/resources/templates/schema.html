@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en"xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Structure</title>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th>Schema</th>
+    </tr>
+    <tr>
+        <th>Name, Datatype, Nullable</th>
+    </tr>
+    </thead>
+        <tbody>
+            <tr th:each="schema: ${message}">
+                <td th:text="${schema}">&nbsp;</td>
+            </tr>
+    </tbody>
+</table>
+</body>
+</html>

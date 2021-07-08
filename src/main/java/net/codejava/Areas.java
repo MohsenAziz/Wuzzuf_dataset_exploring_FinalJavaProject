@@ -18,9 +18,9 @@ public class Areas{
     @RequestMapping("/areas")
     public String countAreas(Model model) throws IOException {
 
-        final Dataset<Row> wuzzufDF = new ReadWuzzufData().readData();
+        final Dataset<Row> wuzzufDataFrame= new ReadWuzzufData().readData();
 
-        final Dataset<Row> countTitlesDF = wuzzufDF.groupBy("Location").count();
+        final Dataset<Row> countTitlesDF = wuzzufDataFrame.groupBy("Location").count();
 
 
 
@@ -52,7 +52,12 @@ public class Areas{
                 .title("most popular areas").xAxisTitle("area").yAxisTitle("Count")
                 .build();
         chart.addSeries("most popular areas", keyList.subList(0, 10), valueList.subList(0, 10));
-        BitmapEncoder.saveBitmap(chart, "D:\\P R O G R A M M I N G\\J A V A\\My java projects\\FirstWebApplicationServer\\src\\main\\resources\\static\\most popular areas bar chart.jpg", BitmapEncoder.BitmapFormat.JPG);
+        try{
+            BitmapEncoder.saveBitmap(chart, "src\\main\\resources\\static\\most popular areas bar chart.jpg", BitmapEncoder.BitmapFormat.JPG);
+        }
+        catch (IOException ex){
+            System.out.println("There is no need to save the image again because it is already saved");
+        }
 
 
 
@@ -66,7 +71,13 @@ public class Areas{
         for (int i = 0; i < 10; i++) {
             chart1.addSeries(keyList.get(i), valueList.get(i));
         }
-        BitmapEncoder.saveBitmap(chart1, "D:\\P R O G R A M M I N G\\J A V A\\My java projects\\FirstWebApplicationServer\\src\\main\\resources\\static\\most popular areas pie chart.jpg", BitmapEncoder.BitmapFormat.JPG);
+
+        try{
+            BitmapEncoder.saveBitmap(chart1, "src\\main\\resources\\static\\most popular areas pie chart.jpg", BitmapEncoder.BitmapFormat.JPG);
+        }
+        catch (IOException ex){
+            System.out.println("There is no need to save the image again because it is already saved");
+        }
 
         model.addAttribute("message", output3);
 

@@ -12,11 +12,11 @@ import org.apache.spark.sql.SparkSession;
 
 public class ReadWuzzufData {
     public Dataset<Row> readData() {
-        final SparkSession sparkSession = SparkSession.builder().appName("Wuzzuf ").master("local[10]")
+        final SparkSession sparkSession = SparkSession.builder().appName("Wuzzuf ").master("local[1]")
                 .getOrCreate();
         final DataFrameReader dataFrameReader = sparkSession.read();
         dataFrameReader.option("header", "true");
-        Dataset<Row> wuzzufDataFrame = dataFrameReader.csv("C:\\users\\hp\\desktop\\Wuzzuf_Jobs.csv");
+        Dataset<Row> wuzzufDataFrame = dataFrameReader.csv("Wuzzuf_Jobs.csv");
         wuzzufDataFrame = wuzzufDataFrame.select("Title", "Company", "Location", "Type", "Level", "YearsExp", "Country", "Skills");
 
         final Dataset<Row> wuzzufDFNoNulls = wuzzufDataFrame.na().drop();

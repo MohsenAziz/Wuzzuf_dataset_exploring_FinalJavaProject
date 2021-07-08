@@ -14,10 +14,12 @@ public class DisplaySummary {
     @RequestMapping("/displaysummarys")
     public String summaryOfData(Model model) {
 
-        final Dataset<Row> wuzzufDF = new ReadWuzzufData().readData();
+        final Dataset<Row> wuzzufDataFrame = new ReadWuzzufData().readData();
 
         List<String> summaryList = new ArrayList<>();
-        wuzzufDF.describe().collectAsList().forEach(row -> summaryList.add(row.toString()));
+        wuzzufDataFrame.describe().collectAsList().forEach(row -> summaryList.add(row.toString()));
+
+        wuzzufDataFrame.describe().show();
 
         model.addAttribute("message", summaryList);
 

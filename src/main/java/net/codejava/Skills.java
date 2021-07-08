@@ -19,7 +19,7 @@ public class Skills {
     @RequestMapping("/skills")
     public String countingSkills(Model model) throws IOException {
 
-        final Dataset<Row> wuzzufDF = new ReadWuzzufData().readData();
+        final Dataset<Row> wuzzufDataFrame = new ReadWuzzufData().readData();
 
 
 
@@ -29,24 +29,24 @@ public class Skills {
 
 
         List<String[]> skills = new ArrayList<>();
-        wuzzufDF.collectAsList().stream().forEach(row -> skills.add(row.get(7).toString().split(",")));
-        List<String> skillList = new ArrayList<>();
+        wuzzufDataFrame.collectAsList().stream().forEach(row -> skills.add(row.get(7).toString().split(",")));
+        List<String> skillsList = new ArrayList<>();
         for (String[] array : skills) {
             for (String i: array) {
-                skillList.add(i);
+                skillsList.add(i);
             }
         }
  /////////////////////////// creating a map from the list where the keys/////////////////////
         // ////////////// are represented as a set to make sure no skill is repeated (as a key ) and the value////////
-       ////////////////////is how many times  this skill was repeated in the original list /////////////////////
+       //////////////////// is how many times  this skill was repeated in the original list /////////////////////
 
 
 
-        Set<String> set = new HashSet<>(skillList);
+        Set<String> set = new HashSet<>(skillsList);
 
         Map<String, Integer> skillMap = new HashMap<>();
 
-        set.stream().forEach(x -> skillMap.put(x, Collections.frequency(skillList, x)));
+        set.stream().forEach(x -> skillMap.put(x, Collections.frequency(skillsList, x)));
 
 
         ////////////////////// this time we already have our map so we are //////////////////////////////
@@ -76,7 +76,12 @@ public class Skills {
                 .title("most popular skills").xAxisTitle("skill").yAxisTitle("Count")
                 .build();
         chart.addSeries("most popular skills", keyList.subList(0, 10), valueList.subList(0, 10));
-        BitmapEncoder.saveBitmap(chart, "D:\\P R O G R A M M I N G\\J A V A\\My java projects\\FirstWebApplicationServer\\src\\main\\resources\\static\\most popular skills bar chart.jpg", BitmapEncoder.BitmapFormat.JPG);
+        try{
+            BitmapEncoder.saveBitmap(chart, "src\\main\\resources\\static\\most popular skills bar chart.jpg", BitmapEncoder.BitmapFormat.JPG);
+        }
+        catch (IOException ex){
+            System.out.println("There is no need to save the image again because it is already saved");
+        }
 
 
 
@@ -91,7 +96,13 @@ public class Skills {
         for (int i = 0; i < 10; i++) {
             chart1.addSeries(keyList.get(i), valueList.get(i));
         }
-        BitmapEncoder.saveBitmap(chart1, "D:\\P R O G R A M M I N G\\J A V A\\My java projects\\FirstWebApplicationServer\\src\\main\\resources\\static\\most popular skills pie chart.jpg", BitmapEncoder.BitmapFormat.JPG);
+
+        try{
+            BitmapEncoder.saveBitmap(chart1, "src\\main\\resources\\static\\most popular skills pie chart.jpg", BitmapEncoder.BitmapFormat.JPG);
+        }
+        catch (IOException ex){
+            System.out.println("There is no need to save the image again because it is already saved");
+        }
 
 
 

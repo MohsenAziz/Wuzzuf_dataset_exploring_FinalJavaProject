@@ -18,9 +18,9 @@ public class JobTitles {
     @RequestMapping("/jobtitles")
     public String countJobTitles(Model model) throws IOException {
 
-        final Dataset<Row> wuzzufDF = new ReadWuzzufData().readData();
+        final Dataset<Row> wuzzufDataFrame = new ReadWuzzufData().readData();
 
-        final Dataset<Row> countTitlesDF = wuzzufDF.groupBy("Title").count();
+        final Dataset<Row> countTitlesDF = wuzzufDataFrame.groupBy("Title").count();
 
 
 ////////////////////// converting the data frame to a map to send to html file//////////////////////
@@ -53,7 +53,12 @@ public class JobTitles {
                 .title("most popular jobs").xAxisTitle("job").yAxisTitle("Count")
                 .build();
         chart.addSeries("most popular jobs", keyList.subList(0, 10), valueList.subList(0, 10));
-        BitmapEncoder.saveBitmap(chart, "D:\\P R O G R A M M I N G\\J A V A\\My java projects\\FirstWebApplicationServer\\src\\main\\resources\\static\\most popular jobs bar chart.jpg", BitmapEncoder.BitmapFormat.JPG);
+        try{
+            BitmapEncoder.saveBitmap(chart, "src\\main\\resources\\static\\most popular jobs bar chart.jpg", BitmapEncoder.BitmapFormat.JPG);
+        }
+        catch (IOException ex){
+            System.out.println("There is no need to save the image again because it is already saved");
+        }
 
 
 
@@ -69,7 +74,12 @@ public class JobTitles {
         for (int i = 0; i < 10; i++) {
             chart1.addSeries(keyList.get(i), valueList.get(i));
         }
-        BitmapEncoder.saveBitmap(chart1, "D:\\P R O G R A M M I N G\\J A V A\\My java projects\\FirstWebApplicationServer\\src\\main\\resources\\static\\most popular jobs pie chart.jpg", BitmapEncoder.BitmapFormat.JPG);
+        try{
+            BitmapEncoder.saveBitmap(chart1, "src\\main\\resources\\static\\most popular jobs pie chart.jpg", BitmapEncoder.BitmapFormat.JPG);
+        }
+        catch (IOException ex){
+            System.out.println("There is no need to save the image again because it is already saved");
+        }
 
         model.addAttribute("message", outout2);
 

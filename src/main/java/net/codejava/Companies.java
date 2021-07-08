@@ -48,7 +48,12 @@ public class Companies {
                 .title("most demanding companies for jobs").xAxisTitle("company").yAxisTitle("Count")
                 .build();
         chart.addSeries("most demanding companies for jobs", keyList.subList(0, 10), valueList.subList(0, 10));
-        BitmapEncoder.saveBitmap(chart, "D:\\P R O G R A M M I N G\\J A V A\\My java projects\\FirstWebApplicationServer\\src\\main\\resources\\static\\most demanding companies for jobs bar chart.jpg", BitmapEncoder.BitmapFormat.JPG);
+        try{
+            BitmapEncoder.saveBitmap(chart, "src\\main\\resources\\static\\most demanding companies for jobs bar chart.jpg", BitmapEncoder.BitmapFormat.JPG);
+        }
+        catch (IOException ex){
+            System.out.println("There is no need to save the image again because it is already saved");
+        }
 
 /////////////////////////// ploting a pie chart  /////////////////////////////////////////////////////////////////////////
 
@@ -61,7 +66,12 @@ public class Companies {
         for (int i = 0; i < 10; i++) {
             chart1.addSeries(keyList.get(i), valueList.get(i));
         }
-        BitmapEncoder.saveBitmap(chart1, "D:\\P R O G R A M M I N G\\J A V A\\My java projects\\FirstWebApplicationServer\\src\\main\\resources\\static\\most demanding companies for jobs pie chart.jpg", BitmapEncoder.BitmapFormat.JPG);
+        try{
+            BitmapEncoder.saveBitmap(chart1, "src\\main\\resources\\static\\most demanding companies for jobs pie chart.jpg", BitmapEncoder.BitmapFormat.JPG);
+        }
+        catch (IOException ex){
+            System.out.println("There is no need to save the image again because it is already saved");
+        }
 
 
 

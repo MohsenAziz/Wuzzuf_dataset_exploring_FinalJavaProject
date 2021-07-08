@@ -13,10 +13,12 @@ public class DisplayData {
     @RequestMapping("/displaydata")
     public String displayingData(Model model) {
 
-        final Dataset<Row> wuzzufDF = new ReadWuzzufData().readData();
+        final Dataset<Row> wuzzufDataFrame = new ReadWuzzufData().readData();
 
         List<String[]> displayingData = new ArrayList<>();
-        wuzzufDF.collectAsList().stream().forEach(row -> displayingData.add(row.toString().split(",")));
+        wuzzufDataFrame.collectAsList().stream().forEach(row -> displayingData.add(row.toString().split(",",8)));
+
+        wuzzufDataFrame.show(100);
 
         model.addAttribute("message", displayingData);
 

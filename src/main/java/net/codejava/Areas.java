@@ -64,7 +64,7 @@ public class Areas{
         ///////////////////////////////////    plotting a pie chart   /////////////////////////////////////////////////////////////////////////////////////////////
 
 
-        PieChart chart1 = new PieChartBuilder().width(800).height(700).title("most popular jobs").build();
+        PieChart chart1 = new PieChartBuilder().width(800).height(700).title("most popular areas").build();
         Color[] sliceColors = new Color[]{new Color(50, 128, 180), new Color(25, 25, 26),  new Color(120, 22, 110), new Color(133, 50, 46), new Color(130, 80, 77), new Color(48, 15, 33), new Color(111, 55, 64), new Color(123, 134, 64), new Color(140, 106, 15),new Color(130, 100, 120)};
         chart1.getStyler().setSeriesColors(sliceColors);
 
